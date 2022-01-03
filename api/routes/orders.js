@@ -5,9 +5,11 @@ const mongoose = require("mongoose");
 const Order = require("../models/order");
 const Product = require("../models/product");
 
+// Handle incoming GET requests to /orders
 router.get("/", (req, res, next) => {
     Order.find()
       .select("product quantity _id")
+      .populate('product', 'name')
       .exec()
       .then(docs => {
         res.status(200).json({
@@ -72,6 +74,7 @@ router.post("/", (req, res, next) => {
 
   router.get("/:orderId", (req, res, next) => {
     Order.findById(req.params.orderId)
+      .populate('product')
       .exec()
       .then(order => {
         if (!order) {
