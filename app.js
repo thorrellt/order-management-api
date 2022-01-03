@@ -15,6 +15,7 @@ mongoose.connect(
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+mongoose.Promise = global.Promise;
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow_Origin', '*');
