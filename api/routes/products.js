@@ -34,7 +34,7 @@ Product = require ('../models/product');
 
 router.get("/", (req, res, next) => {
   Product.find()
-    .select("name price _id")
+    .select("name price _id productImage")
     .exec()
     .then(docs => {
       const response = {
@@ -43,6 +43,7 @@ router.get("/", (req, res, next) => {
           return {
             name: doc.name,
             price: doc.price,
+            productImage: doc.productImage,
             _id: doc._id,
             request: {
               type: "GET",
@@ -51,7 +52,13 @@ router.get("/", (req, res, next) => {
           };
         })
       };
+      //   if (docs.length >= 0) {
       res.status(200).json(response);
+      //   } else {
+      //       res.status(404).json({
+      //           message: 'No entries found'
+      //       });
+      //   }
     })
     .catch(err => {
       console.log(err);
@@ -96,7 +103,7 @@ router.post("/", upload.single('productImage'), (req, res, next) => {
 router.get("/:productId", (req, res, next) => {
   const id = req.params.productId;
   Product.findById(id)
-    .select('name price _id')
+    .select('name price _id productImage')
     .exec()
     .then(doc => {
       console.log("From database", doc);
