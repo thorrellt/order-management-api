@@ -123,16 +123,11 @@ exports.products_update_product = (req, res, next) => {
 
 exports.products_delete = (req, res, next) => {
   const id = req.params.productId;
-  Product.remove({ _id: id })
+  Product.deleteOne({ _id: id })
     .exec()
     .then(result => {
       res.status(200).json({
-        message: "Product deleted",
-        request: {
-          type: "POST",
-          url: "http://localhost:3000/products",
-          body: { name: "String", price: "Number" }
-        }
+        message: "Product deleted"
       });
     })
     .catch(err => {
