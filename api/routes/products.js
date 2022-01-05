@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const multer = require('multer');
+const checkAuth = require ('../middleware/check-auth');
 
 //adjust how uploaded file is stored
 const storage = multer.diskStorage({
@@ -68,7 +69,7 @@ router.get("/", (req, res, next) => {
     });
 });
 
-router.post("/", upload.single('productImage'), (req, res, next) => {
+router.post("/", checkAuth, upload.single('productImage'), (req, res, next) => {
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
@@ -127,25 +128,38 @@ router.get("/:productId", (req, res, next) => {
     });
 });
 
-router.patch('/:id', (req, res, next) => {
-  const id = req.params.id;
-  Product.findByIdAndUpdate(id, { $set: req.body }, { new: true})
-    .then(result => res.status(200).json(result))
-    .catch(err => res.status(500).json({ error: err}))
-})
+router.patch("/:productId", checkAuth, (req, res, next) => {
+  const id = req.params.productId;
+  const updateOps = {};
+  for (const ops of req.body) {
+    updateOps[ops.propName] = ops.value;
+  }
+  Product.update({ _id: id }, { $set: updateOps })
+    .exec()
+    .then(result => {
+      res.status(200).json({
+          message: 'Product updated',
+          request: {
+              type: 'GET',
+              url: 'http://localhost:3000/products/' + id
+          }
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: err
+      });
+    });
+});
 
-router.delete("/:productId", (req, res, next) => {
+router.delete("/:productId", checkAuth, (req, res, next) => {
   const id = req.params.productId;
   Product.remove({ _id: id })
     .exec()
     .then(result => {
       res.status(200).json({
-          message: 'Product deleted',
-          request: {
-              type: 'POST',
-              url: 'http://localhost:3000/products',
-              body: { name: 'String', price: 'Number' }
-          }
+          message: 'Product deleted'
       });
     })
     .catch(err => {
