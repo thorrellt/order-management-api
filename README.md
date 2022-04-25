@@ -32,7 +32,7 @@ The token that is returned should be included as an “Authorization” header f
 
 ![token-example](https://user-images.githubusercontent.com/64343445/148490317-62ce2b5c-c6d1-40a9-9889-6df758874dea.gif)
 
-## Lessons Learned
+## Key Takeaways
 
 **Node.js:** This project served as my introduction to Node.js/Express, its basic capabilities and some of its related packages. In addition, fundamental Separation of Concerns/MVC design principles were implemented for cleanliness.
 
@@ -40,7 +40,7 @@ The token that is returned should be included as an “Authorization” header f
 
 **REST:** I learned a lot about the RESTful style of design/architecture as well as the constraints all REST services should adhere to. Although I have interacted with REST APIs as a client (including HERE and Twitter) understanding the server side of this relationship has increased my comfort as an API user as well. 
 
-**Token-Based Authentication:** I learned that REST APIs are stateless, which is why token-based authentication is preferred as sessions are not an option. Implementing a token-based authentication reinforced knowledge previously gained through school based Cyber Security and Web Development classes as well as introduce me to JWT.
+**Token-Based Authentication:** I learned that REST APIs are stateless, which is why token-based authentication is preferred as sessions are not an option. Implementing a token-based authentication reinforced knowledge previously gained through school based Cyber Security and Web Development classes as well as introduced me to JWT.
 
 **Client Server Interactions via HTTP:** Previous knowledge of client-server interactions was strengthened as well as learning some API testing practices via the Postman tool.
 
