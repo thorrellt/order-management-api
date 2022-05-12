@@ -1,5 +1,5 @@
 
-# Order Management RESTful API
+# Order Management REST API
 
 Welcome to this order management system. This is a basic Node.js RESTful API modeled after an order management system. This API handles GET, PATCH, PULL, and DELETE requests for Orders, Products, and Users. Data is stored in a MongoDB Atlas database.
 
