@@ -18,11 +18,11 @@ Welcome to this order management system. This is a basic Node.js RESTful API mod
 ## If I Revisited This Project, 
 #### I Would...
 
--   ..expand the object fields for a more fleshed out experience.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;..expand the object fields for a more fleshed out experience.
 
--   ..add logic to process requests to retrieve filtered results and more intrinsic search functionality.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;..add logic to process requests to retrieve filtered results and more intrinsic search functionality.  
 
--   ..build a basic web page to interact with this API for easier demoing 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;..build a basic web page to interact with this API for easier demoing 
 
 ## Installation
 
