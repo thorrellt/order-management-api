@@ -16,7 +16,6 @@ Welcome to this order management system. This is a basic Node.js RESTful API mod
 
 **Token-Based Authentication:** I learned that REST APIs are stateless, which is why token-based authentication is preferred as sessions are not an option. Implementing a token-based authentication reinforced knowledge previously gained through school based Cyber Security and Web Development classes as well as introduced me to JWT.
 
-**Client Server Interactions via HTTP:** Previous knowledge of client-server interactions was strengthened as well as learning some API testing practices via the Postman tool.
 
 ## If I Revisited This Project, 
 #### I Would...
